@@ -41,20 +41,20 @@ function routeConfig ($stateProvider) {
         }]
       }
     })
-    .state('public.signup', {
-      url: '/signup',
-      templateUrl: 'src/public/sign-up/sign-up.html',
-      controller: 'SignUpController',
-      controllerAs: '$signUpCtrl'
+    .state('public.newsletter', {
+      url: '/newsletter',
+      templateUrl: 'src/public/newsletter/newsletter.html',
+      controller: 'NewsletterController',
+      controllerAs: 'newsletterCtrl'
     })
     .state('public.myinfo', {
       url: '/myinfo',
       templateUrl: 'src/public/my-info/my-info.html',
-      controller: 'MyInfoController',
-      controllerAs: '$myInfoCtrl',
+      controller: 'MyinfoController',
+      controllerAs: 'myinfoCtrl',
       resolve: {
-        userInfo: ['MenuService', function (MenuService) {
-          return MenuService.getUserProfile();
+        myInfo: ['$stateParams','FormDataService', function ($stateParams, FormDataService) {
+          return FormDataService.getFormDataStorage();
         }]
       }
     });
